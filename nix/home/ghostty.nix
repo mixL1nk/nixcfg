@@ -7,7 +7,7 @@
 
   home.file.".config/ghostty/config" = {
     text = ''
-      theme = ayu
+      theme = catppuccin-mocha
       window-padding-x = 10,10
       window-padding-y = 10,10
       macos-option-as-alt = true

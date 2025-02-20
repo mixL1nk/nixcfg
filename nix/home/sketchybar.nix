@@ -1,6 +1,5 @@
 { pkgs, lib, ... } : {
 
-  #  home.activation.sketchybar = lib.hm.dag.entryAfter ["writeBoundary"] "${pkgs.sketchybar}/bin/sketchybar --reload";
   home.activation.sbarlua = lib.hm.dag.entryAfter ["sketchybar"] ''
     export PATH=${pkgs.coreutils}/bin:/usr/bin:$PATH
     export CFLAGS="-I/usr/local/opt/readline/include -I/usr/local/opt/readline/include/readline"
@@ -9,11 +8,18 @@
       git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua
       cd /tmp/SbarLua
       make install 
+      cd ..
       rm -rf /tmp/SbarLua
     fi
+
     if [ ! -d "/tmp/dotfiles" ]; then
-      git clone https://github.com/FelixKratz/dotfiles.git /tmp/dotfiles
-      if [ !-d "$HOME/.config/sketchybar"]; then
+      if ! pwd &>/dev/null; then
+        echo "Error: Current working directory does not exist. Moving to home directory..."
+        cd ~
+      fi
+
+      git clone https://github.com/FelixKratz/dotfiles.git /tmp/dotfiles && echo "Clone finished"
+      if [ ! -d "$HOME/.config/sketchybar" ]; then
         mv /tmp/dotfiles/.config/sketchybar $HOME/.config/sketchybar
       fi
       rm -rf /tmp/dotfiles

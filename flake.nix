@@ -25,25 +25,35 @@
       config.allowUnfree = true;
       
     };
+    # 공통 모듈 정의
+  commonModules = [
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+    inputs.home-manager.darwinModules.home-manager
+    ./nix/hosts/macbook/configuration.nix  # 모든 MacBook이 공통적으로 사용
+    {
+      nixpkgs = nixpkgsConfig;
+      nix.enable = false;
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.mixlink = import ./nix/home/home.nix;
+    }
+  ];
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#MacBookAirM3
-    darwinConfigurations."MacBookAirM3" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      specialArgs = { inherit inputs; };
-      modules = [
-        inputs.nix-homebrew.darwinModules.nix-homebrew
-        inputs.home-manager.darwinModules.home-manager
-        ./nix/hosts/mbair/configuration.nix
-        {
-          nixpkgs = nixpkgsConfig;
-          nix.enable = false;
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.mixlink = import ./nix/home/home.nix;
-        }
-      ];
+    # $ darwin-rebuild build --flake .#MacBookPro
+    darwinConfigurations = {
+      "MacBookProM1" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs; };
+        modules = commonModules;
+      };
+
+      "MacBookAirM3" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit inputs; };
+        modules = commonModules;
+      };
     };
   };
 }

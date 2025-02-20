@@ -20,10 +20,11 @@
     package = pkgs.yabai;
     enableScriptingAddition = true;
     config = {
+      external_bar = "all:40:0";
       focus_follows_mouse = "off";
       window_placement = "second_child";
       window_topmost = "off";
-      window_shadow = "on";
+      window_shadow = "float";
       window_opacity = "on";
       active_window_opacity = "1.0";
       normal_window_opacity = "0.90";
@@ -42,7 +43,7 @@
       bottom_padding = "10";
       left_padding = "10";
       right_padding = "10";
-      window_gap = "06";
+      window_gap = "10";
     };
     extraConfig = ''
       sudo yabai --load-sa

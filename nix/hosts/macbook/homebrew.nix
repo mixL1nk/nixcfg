@@ -37,7 +37,6 @@ _:
       "font-fira-code"
       # browser
       "google-chrome"
-      "zen-browser"
       # terminal
       "ghostty"
 
@@ -51,7 +50,6 @@ _:
       # dev
       "visual-studio-code"
       "cursor"
-      
       # vm
       "utm"
       # utilities

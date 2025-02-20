@@ -1,5 +1,5 @@
 {
-  description = "Example nix-darwin system flake";
+  description = "My nix-darwin system flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -25,11 +25,10 @@
       config.allowUnfree = true;
       
     };
-    # 공통 모듈 정의
   commonModules = [
     inputs.nix-homebrew.darwinModules.nix-homebrew
     inputs.home-manager.darwinModules.home-manager
-    ./nix/hosts/macbook/configuration.nix  # 모든 MacBook이 공통적으로 사용
+    ./nix/hosts/macbook/configuration.nix 
     {
       nixpkgs = nixpkgsConfig;
       nix.enable = false;

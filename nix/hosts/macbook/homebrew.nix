@@ -50,6 +50,7 @@ _:
       # dev
       "visual-studio-code"
       "cursor"
+      "windsurf"
       # vm
       "utm"
       # utilities

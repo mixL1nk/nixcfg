@@ -96,7 +96,9 @@
           save = 15000;
           share = true;
         };
-        
+        initExtra = ''
+
+        '';
         shellAliases = {
           cat = "bat";
           lg = "lazygit";

@@ -6,6 +6,7 @@
     sessionVariables = {
         XDG_CONFIG_HOME = "$HOME/.config";
         EDITOR = "hx";
+        NO_ZELLIJ_AUTO_START = if config.home.sessionVariables.TERM_PROGRAM or "" == "vscode" then "1" else "";
       };
     packages = with pkgs; [
       htop
@@ -19,6 +20,8 @@
       gnumake
       gcc
       delta
+      skim
+      nixfmt-rfc-style
     ];
   };
 

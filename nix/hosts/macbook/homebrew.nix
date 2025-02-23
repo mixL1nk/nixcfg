@@ -32,9 +32,6 @@ _:
       "font-sf-pro"
       "font-sf-mono"
       "sf-symbols"
-      "font-hack-nerd-font"
-      "font-jetbrains-mono"
-      "font-fira-code"
       "font-d2coding"
       # browser
       "google-chrome"

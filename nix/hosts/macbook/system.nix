@@ -33,6 +33,7 @@
         AppleShowAllFiles = true;
         CreateDesktop = false;
         FXEnableExtensionChangeWarning = false; # disable warning when changing file extension
+        FXPreferredViewStyle = "Nlsv";
         FXDefaultSearchScope = "SCcf"; # current folder
         QuitMenuItem = true;
         ShowPathbar = true; # show path bar
